@@ -1,0 +1,1906 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.1 (Python 3.13.5 on darwin)" generated="2025-07-28T22:27:44.277731" rpa="false" schemaversion="5">
+<suite id="s1" name="Onboard" source="/Users/arunkumar.karthikeyan/Documents/Automation/OnboardingToInsight-Jul282025/TestCases/Onboard.robot">
+<test id="s1-t1" name="Trial1 - Onboard with the specific POE Port number" line="8">
+<kw name="Onboard AP Device To Insight" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.422340" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1',
+ 'poePortNumberList': [1, 11, 48],
+ 'OrganisationName': 'Netgear',
+ 'LocationName': 'Office'} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.422743" level="TRACE">Arguments: [ {'deviceName': 'Switch1',
+ 'poePortNumberList': [1, 11, 48],
+ 'OrganisationName': 'Netgear',
+ 'LocationName': 'Office'} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.422791" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.422817" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.422693" elapsed="0.000132"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.422920" level="TRACE">Arguments: [ '192.168.101.92' ]</msg>
+<msg time="2025-07-28T22:27:44.422940" level="TRACE">Return: '192.168.101.92'</msg>
+<msg time="2025-07-28T22:27:44.422959" level="INFO">${switchIP} = 192.168.101.92</msg>
+<var>${switchIP}</var>
+<arg>${${deviceName}}[ipAddress]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.422880" elapsed="0.000087"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.423038" level="TRACE">Arguments: [ {'deviceName': 'Switch1',
+ 'poePortNumberList': [1, 11, 48],
+ 'OrganisationName': 'Netgear',
+ 'LocationName': 'Office'} | 'poePortNumberList' ]</msg>
+<msg time="2025-07-28T22:27:44.423071" level="TRACE">Return: [1, 11, 48]</msg>
+<msg time="2025-07-28T22:27:44.423097" level="INFO">@{PoeList} = [ 1 | 11 | 48 ]</msg>
+<var>@{PoeList}</var>
+<arg>${inputArguments}</arg>
+<arg>poePortNumberList</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.423008" elapsed="0.000097"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Onboarding Information from LLDP" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.423413" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 1} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.423490" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 1} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.423513" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.423530" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.423461" elapsed="0.000076"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.423600" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 1} | 'portNumber' ]</msg>
+<msg time="2025-07-28T22:27:44.423621" level="TRACE">Return: 1</msg>
+<msg time="2025-07-28T22:27:44.423639" level="INFO">${portNumber} = 1</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.423572" elapsed="0.000074"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.423706" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T22:27:44.423722" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.423738" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.423681" elapsed="0.000064"/>
+</kw>
+<kw name="Check If Root Mode is Enabled in Switch" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.423850" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 1} ]</msg>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.423923" level="TRACE">Arguments: [ '--- Inside "Check If Root Mode is Enabled in Switch" Keyword---' | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.423946" level="WARN">--- Inside "Check If Root Mode is Enabled in Switch" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.423988" level="TRACE">Return: None</msg>
+<arg>--- Inside "Check If Root Mode is Enabled in Switch" Keyword---</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.423893" elapsed="0.000110"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.424076" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 1} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.424100" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.424118" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.424044" elapsed="0.000082"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.424199" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} ]</msg>
+<msg time="2025-07-28T22:27:44.424248" level="TRACE">Return: {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}}</msg>
+<msg time="2025-07-28T22:27:44.424298" level="INFO">${switchInfo} = {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Net...</msg>
+<var>${switchInfo}</var>
+<arg>${${deviceName}}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.424166" elapsed="0.000141"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.424377" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'ssh' ]</msg>
+<msg time="2025-07-28T22:27:44.424423" level="TRACE">Return: {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.424453" level="INFO">${deviceSSHInfo} = {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<var>${deviceSSHInfo}</var>
+<arg>${switchInfo}</arg>
+<arg>ssh</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.424345" elapsed="0.000117"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.424545" level="TRACE">Arguments: [ "switchInfo:{'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}" | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.424595" level="WARN">switchInfo:{'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.424632" level="TRACE">Return: None</msg>
+<arg>switchInfo:${switchInfo}; deviceSSHInfo:${deviceSSHInfo}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.424496" elapsed="0.000150"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.424713" level="TRACE">Arguments: [ False ]</msg>
+<msg time="2025-07-28T22:27:44.424730" level="TRACE">Return: False</msg>
+<msg time="2025-07-28T22:27:44.424754" level="INFO">${rootPromptStatus} = False</msg>
+<var>${rootPromptStatus}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.424685" elapsed="0.000077"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.424839" level="TRACE">Arguments: [ 'not False' | 'SSH into Switch and Enter Root mode' | '&amp;{inputArguments}' ]</msg>
+<kw name="SSH into Switch and Enter Root mode" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.425032" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 1} ]</msg>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.425104" level="TRACE">Arguments: [ '--- Inside "SSH into Switch and Enter Root mode" Keyword---' | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.425120" level="WARN">--- Inside "SSH into Switch and Enter Root mode" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.425150" level="TRACE">Return: None</msg>
+<arg>--- Inside "SSH into Switch and Enter Root mode" Keyword---</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.425079" elapsed="0.000082"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.425235" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 1} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.425258" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.425278" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.425203" elapsed="0.000083"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.425412" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 1} | 'retry' | default='3' ]</msg>
+<msg time="2025-07-28T22:27:44.425441" level="TRACE">Return: '3'</msg>
+<msg time="2025-07-28T22:27:44.425461" level="INFO">${retryCount} = 3</msg>
+<var>${retryCount}</var>
+<arg>${inputArguments}</arg>
+<arg>retry</arg>
+<arg>default=3</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.425323" elapsed="0.000146"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.425542" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} ]</msg>
+<msg time="2025-07-28T22:27:44.425587" level="TRACE">Return: {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}}</msg>
+<msg time="2025-07-28T22:27:44.425631" level="INFO">${switchInfo} = {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Net...</msg>
+<var>${switchInfo}</var>
+<arg>${${deviceName}}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.425508" elapsed="0.000130"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.425698" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'ipAddress' ]</msg>
+<msg time="2025-07-28T22:27:44.425738" level="TRACE">Return: '192.168.101.92'</msg>
+<msg time="2025-07-28T22:27:44.425756" level="INFO">${hostIp} = 192.168.101.92</msg>
+<var>${hostIp}</var>
+<arg>${switchInfo}</arg>
+<arg>ipAddress</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.425671" elapsed="0.000091"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.425822" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'ssh' ]</msg>
+<msg time="2025-07-28T22:27:44.425861" level="TRACE">Return: {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.425888" level="INFO">${deviceSSHInfo} = {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<var>${deviceSSHInfo}</var>
+<arg>${switchInfo}</arg>
+<arg>ssh</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.425795" elapsed="0.000100"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.425954" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'username' ]</msg>
+<msg time="2025-07-28T22:27:44.425980" level="TRACE">Return: 'admin'</msg>
+<msg time="2025-07-28T22:27:44.425996" level="INFO">${sshUsername} = admin</msg>
+<var>${sshUsername}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>username</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.425927" elapsed="0.000076"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.426062" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'password' ]</msg>
+<msg time="2025-07-28T22:27:44.426087" level="TRACE">Return: 'Netgear1234'</msg>
+<msg time="2025-07-28T22:27:44.426104" level="INFO">${sshPassword} = Netgear1234</msg>
+<var>${sshPassword}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.426035" elapsed="0.000076"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.426185" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'sudo_password' ]</msg>
+<msg time="2025-07-28T22:27:44.426211" level="TRACE">Return: '\n'</msg>
+<msg time="2025-07-28T22:27:44.426227" level="INFO">${sshSudoPassword} = 
+</msg>
+<var>${sshSudoPassword}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>sudo_password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.426142" elapsed="0.000092"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.426295" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'rootPrompt' ]</msg>
+<msg time="2025-07-28T22:27:44.426324" level="TRACE">Return: '#'</msg>
+<msg time="2025-07-28T22:27:44.426348" level="INFO">${sshRootPrompt} = #</msg>
+<var>${sshRootPrompt}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>rootPrompt</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.426268" elapsed="0.000090"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.426446" level="TRACE">Arguments: [ "switchInfo: {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}; hostIp:192.168.101.92" | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.426464" level="WARN">switchInfo: {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}; hostIp:192.168.101.92</msg>
+<msg time="2025-07-28T22:27:44.426498" level="TRACE">Return: None</msg>
+<arg>switchInfo: ${switchInfo}; deviceSSHInfo:${deviceSSHInfo}; hostIp:${hostIp}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.426399" elapsed="0.000109"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.426573" level="TRACE">Arguments: [ '${TRUE}' ]</msg>
+<msg time="2025-07-28T22:27:44.426589" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${TRUE}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.426556" elapsed="0.000059"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${openSSH}</var>
+<arg>SSH Open Access</arg>
+<arg>device=${deviceName}</arg>
+<arg>host=${hostIp}</arg>
+<arg>username=${sshUsername}</arg>
+<arg>password=${sshPassword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.426655" elapsed="0.000010"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${openSSH}</arg>
+<arg>FAIL</arg>
+<arg>UNABLE TO SSH INTO THE SWITCH TO ONBOARD THE DEVICE.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.426705" elapsed="0.000008"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="SSH Write Command" owner="SSHOperations">
+<var>${statusOutput}</var>
+<arg>device=${aliasName}</arg>
+<arg>command="\n;\n"</arg>
+<arg>timeout=4s</arg>
+<doc>Sends a command and returns output.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.426837" elapsed="0.000012"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${rootPromptStatus}</var>
+<arg>Should Contain</arg>
+<arg>${statusOutput}</arg>
+<arg>${sshRootPrompt}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.426890" elapsed="0.000009"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${rootPromptStatus}">
+<kw name="SSH Write Command" owner="SSHOperations">
+<var>${writtenCmdOutput}</var>
+<arg>device=${aliasName}</arg>
+<arg>command="enable"</arg>
+<doc>Sends a command and returns output.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.426985" elapsed="0.000010"/>
+</kw>
+<kw name="Convert To Lower Case" owner="String">
+<var>${lowerCaseCmdOutput}</var>
+<arg>${writtenCmdOutput}</arg>
+<doc>Converts string to lower case.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.427027" elapsed="0.000007"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${status}</var>
+<arg>Should Contain</arg>
+<arg>${lowerCaseCmdOutput}</arg>
+<arg>password</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.427063" elapsed="0.000008"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status}</arg>
+<arg>SSH Write Command</arg>
+<arg>device=${aliasName}</arg>
+<arg>command=${sshSudoPassword}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.427103" elapsed="0.000006"/>
+</kw>
+<status status="NOT RUN" start="2025-07-28T22:27:44.426933" elapsed="0.000188"/>
+</branch>
+<status status="NOT RUN" start="2025-07-28T22:27:44.426923" elapsed="0.000212"/>
+</if>
+<kw name="Exit For Loop If" owner="BuiltIn">
+<arg>${rootPromptStatus}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.427161" elapsed="0.000007"/>
+</kw>
+<var name="${retry}"/>
+<status status="NOT RUN" start="2025-07-28T22:27:44.426784" elapsed="0.000394"/>
+</iter>
+<var>${retry}</var>
+<value>${retryCount}</value>
+<status status="NOT RUN" start="2025-07-28T22:27:44.426734" elapsed="0.000457"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${rootPromptStatus}</arg>
+<arg>FAIL</arg>
+<arg>Unable to enter into Root mode of device with IP: ${switchIP}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.427226" elapsed="0.000008"/>
+</kw>
+<msg time="2025-07-28T22:27:44.427266" level="TRACE">Return: True</msg>
+<arg>&amp;{inputArguments}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.424964" elapsed="0.002314"/>
+</kw>
+<msg time="2025-07-28T22:27:44.427291" level="TRACE">Return: True</msg>
+<arg>not ${rootPromptStatus}</arg>
+<arg>SSH into Switch and Enter Root mode</arg>
+<arg>&amp;{inputArguments}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.424806" elapsed="0.002494"/>
+</kw>
+<msg time="2025-07-28T22:27:44.427316" level="TRACE">Return: None</msg>
+<arg>&amp;{inputArguments}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.423792" elapsed="0.003533"/>
+</kw>
+<kw name="Get The Ethernet Port Speed From Testbed" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.427459" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 1} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.427529" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 1} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.427550" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.427566" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.427501" elapsed="0.000073"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.427642" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 1} | 'portNumber' ]</msg>
+<msg time="2025-07-28T22:27:44.427674" level="TRACE">Return: 1</msg>
+<msg time="2025-07-28T22:27:44.427692" level="INFO">${portNumber} = 1</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.427606" elapsed="0.000094"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.427757" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T22:27:44.427772" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.427788" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.427733" elapsed="0.000062"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.427858" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'LinkSpeed' ]</msg>
+<msg time="2025-07-28T22:27:44.427898" level="TRACE">Return: {'1G': '1-48'}</msg>
+<msg time="2025-07-28T22:27:44.427918" level="INFO">${speedInfoDevice} = {'1G': '1-48'}</msg>
+<var>${speedInfoDevice}</var>
+<arg>${${deviceNameinfo}}</arg>
+<arg>LinkSpeed</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.427827" elapsed="0.000098"/>
+</kw>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-07-28T22:27:44.427985" level="TRACE">Arguments: [ {'1G': '1-48'} ]</msg>
+<msg time="2025-07-28T22:27:44.428003" level="TRACE">Return: ['1G']</msg>
+<msg time="2025-07-28T22:27:44.428022" level="INFO">${devicePortranges} = ['1G']</msg>
+<var>${devicePortranges}</var>
+<arg>${speedInfoDevice}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.427959" elapsed="0.000070"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.428083" level="TRACE">Arguments: [ False ]</msg>
+<msg time="2025-07-28T22:27:44.428098" level="TRACE">Return: False</msg>
+<msg time="2025-07-28T22:27:44.428114" level="INFO">${portSpeed} = False</msg>
+<var>${portSpeed}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.428059" elapsed="0.000062"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.428253" level="TRACE">Arguments: [ {'1G': '1-48'} | '1G' ]</msg>
+<msg time="2025-07-28T22:27:44.428273" level="TRACE">Return: '1-48'</msg>
+<msg time="2025-07-28T22:27:44.428290" level="INFO">${portRange} = 1-48</msg>
+<var>${portRange}</var>
+<arg>${speedInfoDevice}</arg>
+<arg>${portInput}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.428220" elapsed="0.000077"/>
+</kw>
+<kw name="Split String" owner="String">
+<msg time="2025-07-28T22:27:44.428358" level="TRACE">Arguments: [ '1-48' | '-' ]</msg>
+<msg time="2025-07-28T22:27:44.428376" level="TRACE">Return: ['1', '48']</msg>
+<msg time="2025-07-28T22:27:44.428395" level="INFO">${parts} = ['1', '48']</msg>
+<var>${parts}</var>
+<arg>${portRange}</arg>
+<arg>-</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.428330" elapsed="0.000071"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.428615" level="TRACE">Arguments: [ '1' ]</msg>
+<msg time="2025-07-28T22:27:44.428636" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T22:27:44.428647" level="TRACE">Return: 1.0</msg>
+<msg time="2025-07-28T22:27:44.428665" level="INFO">${start} = 1.0</msg>
+<var>${start}</var>
+<arg>${parts[0]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.428439" elapsed="0.000233"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.428841" level="TRACE">Arguments: [ '48' ]</msg>
+<msg time="2025-07-28T22:27:44.428861" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T22:27:44.428871" level="TRACE">Return: 48.0</msg>
+<msg time="2025-07-28T22:27:44.428889" level="INFO">${end} = 48.0</msg>
+<var>${end}</var>
+<arg>${parts[1]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.428705" elapsed="0.000191"/>
+</kw>
+<if>
+<branch type="IF" condition="${start} &lt;= ${portNumber} &lt;= ${end}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.429013" level="TRACE">Arguments: [ True ]</msg>
+<msg time="2025-07-28T22:27:44.429028" level="TRACE">Return: True</msg>
+<msg time="2025-07-28T22:27:44.429046" level="INFO">${portSpeed} = True</msg>
+<var>${portSpeed}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.428988" elapsed="0.000064"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.429101" level="TRACE">Arguments: [ '${EthernetSpeeds}[${portInput}]' ]</msg>
+<msg time="2025-07-28T22:27:44.429115" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${EthernetSpeeds}[${portInput}]</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.429087" elapsed="0.000045"/>
+</kw>
+<status status="PASS" start="2025-07-28T22:27:44.428920" elapsed="0.000224"/>
+</branch>
+<status status="PASS" start="2025-07-28T22:27:44.428914" elapsed="0.000243"/>
+</if>
+<var name="${portInput}">1G</var>
+<status status="PASS" start="2025-07-28T22:27:44.428193" elapsed="0.000972"/>
+</iter>
+<var>${portInput}</var>
+<value>@{devicePortranges}</value>
+<status status="PASS" start="2025-07-28T22:27:44.428138" elapsed="0.001041"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${portSpeed}</arg>
+<arg>FAIL</arg>
+<arg>Unable to get the valid speed alias from the preconfigured values.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.429215" elapsed="0.000008"/>
+</kw>
+<msg time="2025-07-28T22:27:44.429259" level="TRACE">Return: 'GigabitEthernet'</msg>
+<msg time="2025-07-28T22:27:44.429277" level="INFO">${poeLinkSpeed} = GigabitEthernet</msg>
+<var>${poeLinkSpeed}</var>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${portNumber}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.427387" elapsed="0.001897"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.429333" level="TRACE">Arguments: [ 'portSpeed=${poeLinkSpeed}' | 'portNumber=${portNumber}' ]</msg>
+<msg time="2025-07-28T22:27:44.429392" level="TRACE">Return: {'portSpeed': 'GigabitEthernet', 'portNumber': 1}</msg>
+<msg time="2025-07-28T22:27:44.429422" level="INFO">&amp;{dictArguments} = { portSpeed=GigabitEthernet | portNumber=1 }</msg>
+<var>&amp;{dictArguments}</var>
+<arg>portSpeed=${poeLinkSpeed}</arg>
+<arg>portNumber=${portNumber}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.429318" elapsed="0.000112"/>
+</kw>
+<kw name="Build Command" owner="CommandBuilder">
+<msg time="2025-07-28T22:27:44.429513" level="TRACE">Arguments: [ 'lldpInterfaceNeighbor' | 'linux' | portSpeed='GigabitEthernet' | portNumber=1 ]</msg>
+<msg time="2025-07-28T22:27:44.429571" level="INFO">{'linux': 'show lldp interfaces $portSpeed $portNumber neighbor'}</msg>
+<msg time="2025-07-28T22:27:44.429582" level="TRACE">Return: 'show lldp interfaces GigabitEthernet 1 neighbor'</msg>
+<msg time="2025-07-28T22:27:44.429615" level="INFO">${lldpNeighbourInterfaceCommand} = show lldp interfaces GigabitEthernet 1 neighbor</msg>
+<var>${lldpNeighbourInterfaceCommand}</var>
+<arg>lldpInterfaceNeighbor</arg>
+<arg>linux</arg>
+<arg>&amp;{dictArguments}</arg>
+<doc>Builds a shell command string.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.429463" elapsed="0.000159"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.429692" level="TRACE">Arguments: [ 'lldpNeighbourInterfaceCommand: show lldp interfaces GigabitEthernet 1 neighbor' | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.429708" level="WARN">lldpNeighbourInterfaceCommand: show lldp interfaces GigabitEthernet 1 neighbor</msg>
+<msg time="2025-07-28T22:27:44.429741" level="TRACE">Return: None</msg>
+<arg>lldpNeighbourInterfaceCommand: ${lldpNeighbourInterfaceCommand}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.429658" elapsed="0.000095"/>
+</kw>
+<msg time="2025-07-28T22:27:44.429776" level="TRACE">Return: None</msg>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${poe}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.423330" elapsed="0.006456"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.429839" level="TRACE">Arguments: [  ]</msg>
+<msg time="2025-07-28T22:27:44.429855" level="INFO">Continuing for loop from the next iteration.</msg>
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.429822" elapsed="0.000051"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${lldpNeighborReport}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.429908" elapsed="0.000009"/>
+</kw>
+<kw name="Split To Lines" owner="String">
+<var>${splitLLDPOutput}</var>
+<arg>${lldpNeighborReport}</arg>
+<doc>Splits the given string to lines.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.429950" elapsed="0.000009"/>
+</kw>
+<var name="${poe}">1</var>
+<status status="PASS" start="2025-07-28T22:27:44.423188" elapsed="0.006784"/>
+</iter>
+<iter>
+<kw name="Get Onboarding Information from LLDP" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.430134" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 11} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.430214" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 11} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.430234" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.430251" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.430184" elapsed="0.000074"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.430317" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 11} | 'portNumber' ]</msg>
+<msg time="2025-07-28T22:27:44.430336" level="TRACE">Return: 11</msg>
+<msg time="2025-07-28T22:27:44.430353" level="INFO">${portNumber} = 11</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.430290" elapsed="0.000070"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.430414" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T22:27:44.430429" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.430445" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.430392" elapsed="0.000059"/>
+</kw>
+<kw name="Check If Root Mode is Enabled in Switch" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.430549" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 11} ]</msg>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.430611" level="TRACE">Arguments: [ '--- Inside "Check If Root Mode is Enabled in Switch" Keyword---' | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.430627" level="WARN">--- Inside "Check If Root Mode is Enabled in Switch" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.430658" level="TRACE">Return: None</msg>
+<arg>--- Inside "Check If Root Mode is Enabled in Switch" Keyword---</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.430589" elapsed="0.000079"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.430741" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 11} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.430764" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.430782" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.430710" elapsed="0.000080"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.430859" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} ]</msg>
+<msg time="2025-07-28T22:27:44.430903" level="TRACE">Return: {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}}</msg>
+<msg time="2025-07-28T22:27:44.430949" level="INFO">${switchInfo} = {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Net...</msg>
+<var>${switchInfo}</var>
+<arg>${${deviceName}}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.430827" elapsed="0.000130"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.431023" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'ssh' ]</msg>
+<msg time="2025-07-28T22:27:44.431067" level="TRACE">Return: {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.431097" level="INFO">${deviceSSHInfo} = {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<var>${deviceSSHInfo}</var>
+<arg>${switchInfo}</arg>
+<arg>ssh</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.430992" elapsed="0.000113"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.431180" level="TRACE">Arguments: [ "switchInfo:{'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}" | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.431207" level="WARN">switchInfo:{'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.431239" level="TRACE">Return: None</msg>
+<arg>switchInfo:${switchInfo}; deviceSSHInfo:${deviceSSHInfo}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.431138" elapsed="0.000112"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.431318" level="TRACE">Arguments: [ False ]</msg>
+<msg time="2025-07-28T22:27:44.431335" level="TRACE">Return: False</msg>
+<msg time="2025-07-28T22:27:44.431355" level="INFO">${rootPromptStatus} = False</msg>
+<var>${rootPromptStatus}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.431291" elapsed="0.000072"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.431438" level="TRACE">Arguments: [ 'not False' | 'SSH into Switch and Enter Root mode' | '&amp;{inputArguments}' ]</msg>
+<kw name="SSH into Switch and Enter Root mode" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.431604" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 11} ]</msg>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.431801" level="TRACE">Arguments: [ '--- Inside "SSH into Switch and Enter Root mode" Keyword---' | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.431817" level="WARN">--- Inside "SSH into Switch and Enter Root mode" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.431845" level="TRACE">Return: None</msg>
+<arg>--- Inside "SSH into Switch and Enter Root mode" Keyword---</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.431777" elapsed="0.000080"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.431931" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 11} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.431954" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.431973" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.431900" elapsed="0.000081"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.432068" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 11} | 'retry' | default='3' ]</msg>
+<msg time="2025-07-28T22:27:44.432094" level="TRACE">Return: '3'</msg>
+<msg time="2025-07-28T22:27:44.432113" level="INFO">${retryCount} = 3</msg>
+<var>${retryCount}</var>
+<arg>${inputArguments}</arg>
+<arg>retry</arg>
+<arg>default=3</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.432017" elapsed="0.000104"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.432191" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} ]</msg>
+<msg time="2025-07-28T22:27:44.432236" level="TRACE">Return: {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}}</msg>
+<msg time="2025-07-28T22:27:44.432277" level="INFO">${switchInfo} = {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Net...</msg>
+<var>${switchInfo}</var>
+<arg>${${deviceName}}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.432159" elapsed="0.000125"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.432342" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'ipAddress' ]</msg>
+<msg time="2025-07-28T22:27:44.432381" level="TRACE">Return: '192.168.101.92'</msg>
+<msg time="2025-07-28T22:27:44.432399" level="INFO">${hostIp} = 192.168.101.92</msg>
+<var>${hostIp}</var>
+<arg>${switchInfo}</arg>
+<arg>ipAddress</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.432316" elapsed="0.000089"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.432464" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'ssh' ]</msg>
+<msg time="2025-07-28T22:27:44.432502" level="TRACE">Return: {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.432528" level="INFO">${deviceSSHInfo} = {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<var>${deviceSSHInfo}</var>
+<arg>${switchInfo}</arg>
+<arg>ssh</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.432437" elapsed="0.000098"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.432594" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'username' ]</msg>
+<msg time="2025-07-28T22:27:44.432620" level="TRACE">Return: 'admin'</msg>
+<msg time="2025-07-28T22:27:44.432636" level="INFO">${sshUsername} = admin</msg>
+<var>${sshUsername}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>username</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.432567" elapsed="0.000076"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.432701" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'password' ]</msg>
+<msg time="2025-07-28T22:27:44.432726" level="TRACE">Return: 'Netgear1234'</msg>
+<msg time="2025-07-28T22:27:44.432743" level="INFO">${sshPassword} = Netgear1234</msg>
+<var>${sshPassword}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.432675" elapsed="0.000074"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.432807" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'sudo_password' ]</msg>
+<msg time="2025-07-28T22:27:44.432833" level="TRACE">Return: '\n'</msg>
+<msg time="2025-07-28T22:27:44.432849" level="INFO">${sshSudoPassword} = 
+</msg>
+<var>${sshSudoPassword}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>sudo_password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.432781" elapsed="0.000076"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.432926" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'rootPrompt' ]</msg>
+<msg time="2025-07-28T22:27:44.432951" level="TRACE">Return: '#'</msg>
+<msg time="2025-07-28T22:27:44.432968" level="INFO">${sshRootPrompt} = #</msg>
+<var>${sshRootPrompt}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>rootPrompt</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.432901" elapsed="0.000073"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.433052" level="TRACE">Arguments: [ "switchInfo: {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}; hostIp:192.168.101.92" | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.433070" level="WARN">switchInfo: {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}; hostIp:192.168.101.92</msg>
+<msg time="2025-07-28T22:27:44.433102" level="TRACE">Return: None</msg>
+<arg>switchInfo: ${switchInfo}; deviceSSHInfo:${deviceSSHInfo}; hostIp:${hostIp}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.433006" elapsed="0.000108"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.433179" level="TRACE">Arguments: [ '${TRUE}' ]</msg>
+<msg time="2025-07-28T22:27:44.433191" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${TRUE}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.433164" elapsed="0.000041"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${openSSH}</var>
+<arg>SSH Open Access</arg>
+<arg>device=${deviceName}</arg>
+<arg>host=${hostIp}</arg>
+<arg>username=${sshUsername}</arg>
+<arg>password=${sshPassword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433238" elapsed="0.000007"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${openSSH}</arg>
+<arg>FAIL</arg>
+<arg>UNABLE TO SSH INTO THE SWITCH TO ONBOARD THE DEVICE.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433278" elapsed="0.000007"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="SSH Write Command" owner="SSHOperations">
+<var>${statusOutput}</var>
+<arg>device=${aliasName}</arg>
+<arg>command="\n;\n"</arg>
+<arg>timeout=4s</arg>
+<doc>Sends a command and returns output.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433374" elapsed="0.000009"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${rootPromptStatus}</var>
+<arg>Should Contain</arg>
+<arg>${statusOutput}</arg>
+<arg>${sshRootPrompt}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433417" elapsed="0.000008"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${rootPromptStatus}">
+<kw name="SSH Write Command" owner="SSHOperations">
+<var>${writtenCmdOutput}</var>
+<arg>device=${aliasName}</arg>
+<arg>command="enable"</arg>
+<doc>Sends a command and returns output.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433489" elapsed="0.000009"/>
+</kw>
+<kw name="Convert To Lower Case" owner="String">
+<var>${lowerCaseCmdOutput}</var>
+<arg>${writtenCmdOutput}</arg>
+<doc>Converts string to lower case.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433529" elapsed="0.000007"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${status}</var>
+<arg>Should Contain</arg>
+<arg>${lowerCaseCmdOutput}</arg>
+<arg>password</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433566" elapsed="0.000007"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status}</arg>
+<arg>SSH Write Command</arg>
+<arg>device=${aliasName}</arg>
+<arg>command=${sshSudoPassword}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433603" elapsed="0.000007"/>
+</kw>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433447" elapsed="0.000175"/>
+</branch>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433442" elapsed="0.000190"/>
+</if>
+<kw name="Exit For Loop If" owner="BuiltIn">
+<arg>${rootPromptStatus}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433657" elapsed="0.000007"/>
+</kw>
+<var name="${retry}"/>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433335" elapsed="0.000339"/>
+</iter>
+<var>${retry}</var>
+<value>${retryCount}</value>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433300" elapsed="0.000384"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${rootPromptStatus}</arg>
+<arg>FAIL</arg>
+<arg>Unable to enter into Root mode of device with IP: ${switchIP}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.433717" elapsed="0.000007"/>
+</kw>
+<msg time="2025-07-28T22:27:44.433750" level="TRACE">Return: True</msg>
+<arg>&amp;{inputArguments}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.431539" elapsed="0.002222"/>
+</kw>
+<msg time="2025-07-28T22:27:44.433774" level="TRACE">Return: True</msg>
+<arg>not ${rootPromptStatus}</arg>
+<arg>SSH into Switch and Enter Root mode</arg>
+<arg>&amp;{inputArguments}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.431402" elapsed="0.002381"/>
+</kw>
+<msg time="2025-07-28T22:27:44.433797" level="TRACE">Return: None</msg>
+<arg>&amp;{inputArguments}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.430494" elapsed="0.003312"/>
+</kw>
+<kw name="Get The Ethernet Port Speed From Testbed" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.433933" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 11} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.434001" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 11} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.434021" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.434038" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.433973" elapsed="0.000072"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.434102" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 11} | 'portNumber' ]</msg>
+<msg time="2025-07-28T22:27:44.434122" level="TRACE">Return: 11</msg>
+<msg time="2025-07-28T22:27:44.434139" level="INFO">${portNumber} = 11</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.434076" elapsed="0.000070"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.434211" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T22:27:44.434225" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.434240" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.434188" elapsed="0.000059"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.434309" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'LinkSpeed' ]</msg>
+<msg time="2025-07-28T22:27:44.434351" level="TRACE">Return: {'1G': '1-48'}</msg>
+<msg time="2025-07-28T22:27:44.434371" level="INFO">${speedInfoDevice} = {'1G': '1-48'}</msg>
+<var>${speedInfoDevice}</var>
+<arg>${${deviceNameinfo}}</arg>
+<arg>LinkSpeed</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.434279" elapsed="0.000098"/>
+</kw>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-07-28T22:27:44.434435" level="TRACE">Arguments: [ {'1G': '1-48'} ]</msg>
+<msg time="2025-07-28T22:27:44.434453" level="TRACE">Return: ['1G']</msg>
+<msg time="2025-07-28T22:27:44.434471" level="INFO">${devicePortranges} = ['1G']</msg>
+<var>${devicePortranges}</var>
+<arg>${speedInfoDevice}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.434410" elapsed="0.000068"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.434533" level="TRACE">Arguments: [ False ]</msg>
+<msg time="2025-07-28T22:27:44.434548" level="TRACE">Return: False</msg>
+<msg time="2025-07-28T22:27:44.434564" level="INFO">${portSpeed} = False</msg>
+<var>${portSpeed}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.434509" elapsed="0.000061"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.434697" level="TRACE">Arguments: [ {'1G': '1-48'} | '1G' ]</msg>
+<msg time="2025-07-28T22:27:44.434717" level="TRACE">Return: '1-48'</msg>
+<msg time="2025-07-28T22:27:44.434734" level="INFO">${portRange} = 1-48</msg>
+<var>${portRange}</var>
+<arg>${speedInfoDevice}</arg>
+<arg>${portInput}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.434665" elapsed="0.000075"/>
+</kw>
+<kw name="Split String" owner="String">
+<msg time="2025-07-28T22:27:44.434799" level="TRACE">Arguments: [ '1-48' | '-' ]</msg>
+<msg time="2025-07-28T22:27:44.434816" level="TRACE">Return: ['1', '48']</msg>
+<msg time="2025-07-28T22:27:44.434834" level="INFO">${parts} = ['1', '48']</msg>
+<var>${parts}</var>
+<arg>${portRange}</arg>
+<arg>-</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.434773" elapsed="0.000068"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.435007" level="TRACE">Arguments: [ '1' ]</msg>
+<msg time="2025-07-28T22:27:44.435024" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T22:27:44.435035" level="TRACE">Return: 1.0</msg>
+<msg time="2025-07-28T22:27:44.435052" level="INFO">${start} = 1.0</msg>
+<var>${start}</var>
+<arg>${parts[0]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.434874" elapsed="0.000185"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.435218" level="TRACE">Arguments: [ '48' ]</msg>
+<msg time="2025-07-28T22:27:44.435234" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T22:27:44.435244" level="TRACE">Return: 48.0</msg>
+<msg time="2025-07-28T22:27:44.435261" level="INFO">${end} = 48.0</msg>
+<var>${end}</var>
+<arg>${parts[1]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.435091" elapsed="0.000177"/>
+</kw>
+<if>
+<branch type="IF" condition="${start} &lt;= ${portNumber} &lt;= ${end}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.435377" level="TRACE">Arguments: [ True ]</msg>
+<msg time="2025-07-28T22:27:44.435392" level="TRACE">Return: True</msg>
+<msg time="2025-07-28T22:27:44.435409" level="INFO">${portSpeed} = True</msg>
+<var>${portSpeed}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.435353" elapsed="0.000063"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.435463" level="TRACE">Arguments: [ '${EthernetSpeeds}[${portInput}]' ]</msg>
+<msg time="2025-07-28T22:27:44.435477" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${EthernetSpeeds}[${portInput}]</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.435450" elapsed="0.000040"/>
+</kw>
+<status status="PASS" start="2025-07-28T22:27:44.435290" elapsed="0.000212"/>
+</branch>
+<status status="PASS" start="2025-07-28T22:27:44.435285" elapsed="0.000228"/>
+</if>
+<var name="${portInput}">1G</var>
+<status status="PASS" start="2025-07-28T22:27:44.434639" elapsed="0.000881"/>
+</iter>
+<var>${portInput}</var>
+<value>@{devicePortranges}</value>
+<status status="PASS" start="2025-07-28T22:27:44.434587" elapsed="0.000945"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${portSpeed}</arg>
+<arg>FAIL</arg>
+<arg>Unable to get the valid speed alias from the preconfigured values.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.435567" elapsed="0.000008"/>
+</kw>
+<msg time="2025-07-28T22:27:44.435609" level="TRACE">Return: 'GigabitEthernet'</msg>
+<msg time="2025-07-28T22:27:44.435627" level="INFO">${poeLinkSpeed} = GigabitEthernet</msg>
+<var>${poeLinkSpeed}</var>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${portNumber}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.433864" elapsed="0.001770"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.435682" level="TRACE">Arguments: [ 'portSpeed=${poeLinkSpeed}' | 'portNumber=${portNumber}' ]</msg>
+<msg time="2025-07-28T22:27:44.435737" level="TRACE">Return: {'portSpeed': 'GigabitEthernet', 'portNumber': 11}</msg>
+<msg time="2025-07-28T22:27:44.435766" level="INFO">&amp;{dictArguments} = { portSpeed=GigabitEthernet | portNumber=11 }</msg>
+<var>&amp;{dictArguments}</var>
+<arg>portSpeed=${poeLinkSpeed}</arg>
+<arg>portNumber=${portNumber}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.435668" elapsed="0.000106"/>
+</kw>
+<kw name="Build Command" owner="CommandBuilder">
+<msg time="2025-07-28T22:27:44.435848" level="TRACE">Arguments: [ 'lldpInterfaceNeighbor' | 'linux' | portSpeed='GigabitEthernet' | portNumber=11 ]</msg>
+<msg time="2025-07-28T22:27:44.435900" level="INFO">{'linux': 'show lldp interfaces $portSpeed $portNumber neighbor'}</msg>
+<msg time="2025-07-28T22:27:44.435911" level="TRACE">Return: 'show lldp interfaces GigabitEthernet 11 neighbor'</msg>
+<msg time="2025-07-28T22:27:44.435930" level="INFO">${lldpNeighbourInterfaceCommand} = show lldp interfaces GigabitEthernet 11 neighbor</msg>
+<var>${lldpNeighbourInterfaceCommand}</var>
+<arg>lldpInterfaceNeighbor</arg>
+<arg>linux</arg>
+<arg>&amp;{dictArguments}</arg>
+<doc>Builds a shell command string.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.435806" elapsed="0.000131"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.436018" level="TRACE">Arguments: [ 'lldpNeighbourInterfaceCommand: show lldp interfaces GigabitEthernet 11 neighbor' | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.436034" level="WARN">lldpNeighbourInterfaceCommand: show lldp interfaces GigabitEthernet 11 neighbor</msg>
+<msg time="2025-07-28T22:27:44.436063" level="TRACE">Return: None</msg>
+<arg>lldpNeighbourInterfaceCommand: ${lldpNeighbourInterfaceCommand}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.435983" elapsed="0.000093"/>
+</kw>
+<msg time="2025-07-28T22:27:44.436098" level="TRACE">Return: None</msg>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${poe}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.430055" elapsed="0.006056"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.436160" level="TRACE">Arguments: [  ]</msg>
+<msg time="2025-07-28T22:27:44.436173" level="INFO">Continuing for loop from the next iteration.</msg>
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.436146" elapsed="0.000041"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${lldpNeighborReport}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.436216" elapsed="0.000009"/>
+</kw>
+<kw name="Split To Lines" owner="String">
+<var>${splitLLDPOutput}</var>
+<arg>${lldpNeighborReport}</arg>
+<doc>Splits the given string to lines.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.436254" elapsed="0.000007"/>
+</kw>
+<var name="${poe}">11</var>
+<status status="PASS" start="2025-07-28T22:27:44.430010" elapsed="0.006263"/>
+</iter>
+<iter>
+<kw name="Get Onboarding Information from LLDP" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.436408" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 48} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.436476" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 48} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.436496" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.436513" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.436448" elapsed="0.000071"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.436579" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 48} | 'portNumber' ]</msg>
+<msg time="2025-07-28T22:27:44.436598" level="TRACE">Return: 48</msg>
+<msg time="2025-07-28T22:27:44.436614" level="INFO">${portNumber} = 48</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.436552" elapsed="0.000069"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.436675" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T22:27:44.436689" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.436705" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.436653" elapsed="0.000059"/>
+</kw>
+<kw name="Check If Root Mode is Enabled in Switch" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.436810" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 48} ]</msg>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.436872" level="TRACE">Arguments: [ '--- Inside "Check If Root Mode is Enabled in Switch" Keyword---' | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.436888" level="WARN">--- Inside "Check If Root Mode is Enabled in Switch" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.436917" level="TRACE">Return: None</msg>
+<arg>--- Inside "Check If Root Mode is Enabled in Switch" Keyword---</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.436850" elapsed="0.000078"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.437002" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 48} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.437021" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.437038" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.436973" elapsed="0.000072"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.437106" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} ]</msg>
+<msg time="2025-07-28T22:27:44.437146" level="TRACE">Return: {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}}</msg>
+<msg time="2025-07-28T22:27:44.437187" level="INFO">${switchInfo} = {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Net...</msg>
+<var>${switchInfo}</var>
+<arg>${${deviceName}}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.437077" elapsed="0.000117"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.437253" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'ssh' ]</msg>
+<msg time="2025-07-28T22:27:44.437292" level="TRACE">Return: {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.437318" level="INFO">${deviceSSHInfo} = {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<var>${deviceSSHInfo}</var>
+<arg>${switchInfo}</arg>
+<arg>ssh</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.437226" elapsed="0.000099"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.437399" level="TRACE">Arguments: [ "switchInfo:{'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}" | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.437416" level="WARN">switchInfo:{'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.437455" level="TRACE">Return: None</msg>
+<arg>switchInfo:${switchInfo}; deviceSSHInfo:${deviceSSHInfo}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.437358" elapsed="0.000108"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.437538" level="TRACE">Arguments: [ False ]</msg>
+<msg time="2025-07-28T22:27:44.437552" level="TRACE">Return: False</msg>
+<msg time="2025-07-28T22:27:44.437570" level="INFO">${rootPromptStatus} = False</msg>
+<var>${rootPromptStatus}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.437512" elapsed="0.000064"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.437637" level="TRACE">Arguments: [ 'not False' | 'SSH into Switch and Enter Root mode' | '&amp;{inputArguments}' ]</msg>
+<kw name="SSH into Switch and Enter Root mode" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.437778" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 48} ]</msg>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.437841" level="TRACE">Arguments: [ '--- Inside "SSH into Switch and Enter Root mode" Keyword---' | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.437858" level="WARN">--- Inside "SSH into Switch and Enter Root mode" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.437885" level="TRACE">Return: None</msg>
+<arg>--- Inside "SSH into Switch and Enter Root mode" Keyword---</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.437818" elapsed="0.000078"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.437972" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 48} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.437991" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.438008" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.437943" elapsed="0.000071"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.438092" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 48} | 'retry' | default='3' ]</msg>
+<msg time="2025-07-28T22:27:44.438115" level="TRACE">Return: '3'</msg>
+<msg time="2025-07-28T22:27:44.438132" level="INFO">${retryCount} = 3</msg>
+<var>${retryCount}</var>
+<arg>${inputArguments}</arg>
+<arg>retry</arg>
+<arg>default=3</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.438047" elapsed="0.000092"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.438206" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} ]</msg>
+<msg time="2025-07-28T22:27:44.438259" level="TRACE">Return: {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}}</msg>
+<msg time="2025-07-28T22:27:44.438299" level="INFO">${switchInfo} = {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Net...</msg>
+<var>${switchInfo}</var>
+<arg>${${deviceName}}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.438174" elapsed="0.000133"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.438366" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'ipAddress' ]</msg>
+<msg time="2025-07-28T22:27:44.438405" level="TRACE">Return: '192.168.101.92'</msg>
+<msg time="2025-07-28T22:27:44.438423" level="INFO">${hostIp} = 192.168.101.92</msg>
+<var>${hostIp}</var>
+<arg>${switchInfo}</arg>
+<arg>ipAddress</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.438338" elapsed="0.000092"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.438489" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'ssh' ]</msg>
+<msg time="2025-07-28T22:27:44.438528" level="TRACE">Return: {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.438554" level="INFO">${deviceSSHInfo} = {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<var>${deviceSSHInfo}</var>
+<arg>${switchInfo}</arg>
+<arg>ssh</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.438462" elapsed="0.000099"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.438620" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'username' ]</msg>
+<msg time="2025-07-28T22:27:44.438646" level="TRACE">Return: 'admin'</msg>
+<msg time="2025-07-28T22:27:44.438662" level="INFO">${sshUsername} = admin</msg>
+<var>${sshUsername}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>username</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.438593" elapsed="0.000077"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.438726" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'password' ]</msg>
+<msg time="2025-07-28T22:27:44.438751" level="TRACE">Return: 'Netgear1234'</msg>
+<msg time="2025-07-28T22:27:44.438768" level="INFO">${sshPassword} = Netgear1234</msg>
+<var>${sshPassword}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.438701" elapsed="0.000074"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.438834" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'sudo_password' ]</msg>
+<msg time="2025-07-28T22:27:44.438860" level="TRACE">Return: '\n'</msg>
+<msg time="2025-07-28T22:27:44.438876" level="INFO">${sshSudoPassword} = 
+</msg>
+<var>${sshSudoPassword}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>sudo_password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.438807" elapsed="0.000076"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.438941" level="TRACE">Arguments: [ {'username': 'admin',
+ 'password': 'Netgear1234',
+ 'sudo_password': '\n',
+ 'rootPrompt': '#'} | 'rootPrompt' ]</msg>
+<msg time="2025-07-28T22:27:44.438975" level="TRACE">Return: '#'</msg>
+<msg time="2025-07-28T22:27:44.438994" level="INFO">${sshRootPrompt} = #</msg>
+<var>${sshRootPrompt}</var>
+<arg>${deviceSSHInfo}</arg>
+<arg>rootPrompt</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.438915" elapsed="0.000085"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.439078" level="TRACE">Arguments: [ "switchInfo: {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\\n', 'rootPrompt': '#'}; hostIp:192.168.101.92" | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.439096" level="WARN">switchInfo: {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}; hostIp:192.168.101.92</msg>
+<msg time="2025-07-28T22:27:44.439126" level="TRACE">Return: None</msg>
+<arg>switchInfo: ${switchInfo}; deviceSSHInfo:${deviceSSHInfo}; hostIp:${hostIp}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.439033" elapsed="0.000105"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.439202" level="TRACE">Arguments: [ '${TRUE}' ]</msg>
+<msg time="2025-07-28T22:27:44.439214" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${TRUE}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.439188" elapsed="0.000039"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${openSSH}</var>
+<arg>SSH Open Access</arg>
+<arg>device=${deviceName}</arg>
+<arg>host=${hostIp}</arg>
+<arg>username=${sshUsername}</arg>
+<arg>password=${sshPassword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439259" elapsed="0.000008"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${openSSH}</arg>
+<arg>FAIL</arg>
+<arg>UNABLE TO SSH INTO THE SWITCH TO ONBOARD THE DEVICE.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439301" elapsed="0.000006"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="SSH Write Command" owner="SSHOperations">
+<var>${statusOutput}</var>
+<arg>device=${aliasName}</arg>
+<arg>command="\n;\n"</arg>
+<arg>timeout=4s</arg>
+<doc>Sends a command and returns output.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439393" elapsed="0.000009"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${rootPromptStatus}</var>
+<arg>Should Contain</arg>
+<arg>${statusOutput}</arg>
+<arg>${sshRootPrompt}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439435" elapsed="0.000008"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${rootPromptStatus}">
+<kw name="SSH Write Command" owner="SSHOperations">
+<var>${writtenCmdOutput}</var>
+<arg>device=${aliasName}</arg>
+<arg>command="enable"</arg>
+<doc>Sends a command and returns output.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439506" elapsed="0.000009"/>
+</kw>
+<kw name="Convert To Lower Case" owner="String">
+<var>${lowerCaseCmdOutput}</var>
+<arg>${writtenCmdOutput}</arg>
+<doc>Converts string to lower case.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439545" elapsed="0.000007"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<var>${status}</var>
+<arg>Should Contain</arg>
+<arg>${lowerCaseCmdOutput}</arg>
+<arg>password</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439580" elapsed="0.000007"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${status}</arg>
+<arg>SSH Write Command</arg>
+<arg>device=${aliasName}</arg>
+<arg>command=${sshSudoPassword}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439618" elapsed="0.000007"/>
+</kw>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439465" elapsed="0.000172"/>
+</branch>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439460" elapsed="0.000187"/>
+</if>
+<kw name="Exit For Loop If" owner="BuiltIn">
+<arg>${rootPromptStatus}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439671" elapsed="0.000007"/>
+</kw>
+<var name="${retry}"/>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439354" elapsed="0.000334"/>
+</iter>
+<var>${retry}</var>
+<value>${retryCount}</value>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439322" elapsed="0.000376"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${rootPromptStatus}</arg>
+<arg>FAIL</arg>
+<arg>Unable to enter into Root mode of device with IP: ${switchIP}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.439730" elapsed="0.000007"/>
+</kw>
+<msg time="2025-07-28T22:27:44.439762" level="TRACE">Return: True</msg>
+<arg>&amp;{inputArguments}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.437720" elapsed="0.002054"/>
+</kw>
+<msg time="2025-07-28T22:27:44.439787" level="TRACE">Return: True</msg>
+<arg>not ${rootPromptStatus}</arg>
+<arg>SSH into Switch and Enter Root mode</arg>
+<arg>&amp;{inputArguments}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.437610" elapsed="0.002185"/>
+</kw>
+<msg time="2025-07-28T22:27:44.439810" level="TRACE">Return: None</msg>
+<arg>&amp;{inputArguments}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.436755" elapsed="0.003063"/>
+</kw>
+<kw name="Get The Ethernet Port Speed From Testbed" owner="OnboardingDevices">
+<msg time="2025-07-28T22:27:44.439947" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 48} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.440012" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 48} | 'deviceName' ]</msg>
+<msg time="2025-07-28T22:27:44.440032" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.440049" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.439987" elapsed="0.000069"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.440115" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 48} | 'portNumber' ]</msg>
+<msg time="2025-07-28T22:27:44.440135" level="TRACE">Return: 48</msg>
+<msg time="2025-07-28T22:27:44.440152" level="INFO">${portNumber} = 48</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.440088" elapsed="0.000071"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.440215" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T22:27:44.440230" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T22:27:44.440246" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.440191" elapsed="0.000062"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.440324" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'LinkSpeed' ]</msg>
+<msg time="2025-07-28T22:27:44.440364" level="TRACE">Return: {'1G': '1-48'}</msg>
+<msg time="2025-07-28T22:27:44.440384" level="INFO">${speedInfoDevice} = {'1G': '1-48'}</msg>
+<var>${speedInfoDevice}</var>
+<arg>${${deviceNameinfo}}</arg>
+<arg>LinkSpeed</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.440292" elapsed="0.000099"/>
+</kw>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-07-28T22:27:44.440451" level="TRACE">Arguments: [ {'1G': '1-48'} ]</msg>
+<msg time="2025-07-28T22:27:44.440468" level="TRACE">Return: ['1G']</msg>
+<msg time="2025-07-28T22:27:44.440486" level="INFO">${devicePortranges} = ['1G']</msg>
+<var>${devicePortranges}</var>
+<arg>${speedInfoDevice}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.440423" elapsed="0.000070"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.440547" level="TRACE">Arguments: [ False ]</msg>
+<msg time="2025-07-28T22:27:44.440561" level="TRACE">Return: False</msg>
+<msg time="2025-07-28T22:27:44.440577" level="INFO">${portSpeed} = False</msg>
+<var>${portSpeed}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.440524" elapsed="0.000060"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T22:27:44.440842" level="TRACE">Arguments: [ {'1G': '1-48'} | '1G' ]</msg>
+<msg time="2025-07-28T22:27:44.440862" level="TRACE">Return: '1-48'</msg>
+<msg time="2025-07-28T22:27:44.440879" level="INFO">${portRange} = 1-48</msg>
+<var>${portRange}</var>
+<arg>${speedInfoDevice}</arg>
+<arg>${portInput}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.440807" elapsed="0.000079"/>
+</kw>
+<kw name="Split String" owner="String">
+<msg time="2025-07-28T22:27:44.440945" level="TRACE">Arguments: [ '1-48' | '-' ]</msg>
+<msg time="2025-07-28T22:27:44.440961" level="TRACE">Return: ['1', '48']</msg>
+<msg time="2025-07-28T22:27:44.440980" level="INFO">${parts} = ['1', '48']</msg>
+<var>${parts}</var>
+<arg>${portRange}</arg>
+<arg>-</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.440919" elapsed="0.000067"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.441148" level="TRACE">Arguments: [ '1' ]</msg>
+<msg time="2025-07-28T22:27:44.441164" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T22:27:44.441175" level="TRACE">Return: 1.0</msg>
+<msg time="2025-07-28T22:27:44.441192" level="INFO">${start} = 1.0</msg>
+<var>${start}</var>
+<arg>${parts[0]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.441020" elapsed="0.000178"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.441355" level="TRACE">Arguments: [ '48' ]</msg>
+<msg time="2025-07-28T22:27:44.441371" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T22:27:44.441381" level="TRACE">Return: 48.0</msg>
+<msg time="2025-07-28T22:27:44.441397" level="INFO">${end} = 48.0</msg>
+<var>${end}</var>
+<arg>${parts[1]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.441231" elapsed="0.000173"/>
+</kw>
+<if>
+<branch type="IF" condition="${start} &lt;= ${portNumber} &lt;= ${end}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.441512" level="TRACE">Arguments: [ True ]</msg>
+<msg time="2025-07-28T22:27:44.441528" level="TRACE">Return: True</msg>
+<msg time="2025-07-28T22:27:44.441544" level="INFO">${portSpeed} = True</msg>
+<var>${portSpeed}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.441488" elapsed="0.000063"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.441599" level="TRACE">Arguments: [ '${EthernetSpeeds}[${portInput}]' ]</msg>
+<msg time="2025-07-28T22:27:44.441612" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${EthernetSpeeds}[${portInput}]</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.441585" elapsed="0.000040"/>
+</kw>
+<status status="PASS" start="2025-07-28T22:27:44.441426" elapsed="0.000211"/>
+</branch>
+<status status="PASS" start="2025-07-28T22:27:44.441421" elapsed="0.000227"/>
+</if>
+<var name="${portInput}">1G</var>
+<status status="PASS" start="2025-07-28T22:27:44.440780" elapsed="0.000875"/>
+</iter>
+<var>${portInput}</var>
+<value>@{devicePortranges}</value>
+<status status="PASS" start="2025-07-28T22:27:44.440600" elapsed="0.001067"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${portSpeed}</arg>
+<arg>FAIL</arg>
+<arg>Unable to get the valid speed alias from the preconfigured values.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.441701" elapsed="0.000007"/>
+</kw>
+<msg time="2025-07-28T22:27:44.441743" level="TRACE">Return: 'GigabitEthernet'</msg>
+<msg time="2025-07-28T22:27:44.441761" level="INFO">${poeLinkSpeed} = GigabitEthernet</msg>
+<var>${poeLinkSpeed}</var>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${portNumber}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.439878" elapsed="0.001890"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.441816" level="TRACE">Arguments: [ 'portSpeed=${poeLinkSpeed}' | 'portNumber=${portNumber}' ]</msg>
+<msg time="2025-07-28T22:27:44.441868" level="TRACE">Return: {'portSpeed': 'GigabitEthernet', 'portNumber': 48}</msg>
+<msg time="2025-07-28T22:27:44.441898" level="INFO">&amp;{dictArguments} = { portSpeed=GigabitEthernet | portNumber=48 }</msg>
+<var>&amp;{dictArguments}</var>
+<arg>portSpeed=${poeLinkSpeed}</arg>
+<arg>portNumber=${portNumber}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.441802" elapsed="0.000103"/>
+</kw>
+<kw name="Build Command" owner="CommandBuilder">
+<msg time="2025-07-28T22:27:44.441980" level="TRACE">Arguments: [ 'lldpInterfaceNeighbor' | 'linux' | portSpeed='GigabitEthernet' | portNumber=48 ]</msg>
+<msg time="2025-07-28T22:27:44.442028" level="INFO">{'linux': 'show lldp interfaces $portSpeed $portNumber neighbor'}</msg>
+<msg time="2025-07-28T22:27:44.442037" level="TRACE">Return: 'show lldp interfaces GigabitEthernet 48 neighbor'</msg>
+<msg time="2025-07-28T22:27:44.442054" level="INFO">${lldpNeighbourInterfaceCommand} = show lldp interfaces GigabitEthernet 48 neighbor</msg>
+<var>${lldpNeighbourInterfaceCommand}</var>
+<arg>lldpInterfaceNeighbor</arg>
+<arg>linux</arg>
+<arg>&amp;{dictArguments}</arg>
+<doc>Builds a shell command string.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.441939" elapsed="0.000122"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.442132" level="TRACE">Arguments: [ 'lldpNeighbourInterfaceCommand: show lldp interfaces GigabitEthernet 48 neighbor' | 'WARN' ]</msg>
+<msg time="2025-07-28T22:27:44.442150" level="WARN">lldpNeighbourInterfaceCommand: show lldp interfaces GigabitEthernet 48 neighbor</msg>
+<msg time="2025-07-28T22:27:44.442191" level="TRACE">Return: None</msg>
+<arg>lldpNeighbourInterfaceCommand: ${lldpNeighbourInterfaceCommand}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.442095" elapsed="0.000109"/>
+</kw>
+<msg time="2025-07-28T22:27:44.442222" level="TRACE">Return: None</msg>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${poe}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.436341" elapsed="0.005891"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<msg time="2025-07-28T22:27:44.442282" level="TRACE">Arguments: [  ]</msg>
+<msg time="2025-07-28T22:27:44.442295" level="INFO">Continuing for loop from the next iteration.</msg>
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="PASS" start="2025-07-28T22:27:44.442266" elapsed="0.000042"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${lldpNeighborReport}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.442338" elapsed="0.000007"/>
+</kw>
+<kw name="Split To Lines" owner="String">
+<var>${splitLLDPOutput}</var>
+<arg>${lldpNeighborReport}</arg>
+<doc>Splits the given string to lines.</doc>
+<status status="NOT RUN" start="2025-07-28T22:27:44.442374" elapsed="0.000007"/>
+</kw>
+<var name="${poe}">48</var>
+<status status="PASS" start="2025-07-28T22:27:44.436304" elapsed="0.006089"/>
+</iter>
+<var>${poe}</var>
+<value>@{PoeList}</value>
+<status status="PASS" start="2025-07-28T22:27:44.423130" elapsed="0.019276"/>
+</for>
+<msg time="2025-07-28T22:27:44.442422" level="TRACE">Return: None</msg>
+<arg>&amp;{OnboardingArguments}</arg>
+<status status="PASS" start="2025-07-28T22:27:44.422227" elapsed="0.020206"/>
+</kw>
+<status status="PASS" start="2025-07-28T22:27:44.421911" elapsed="0.020574"/>
+</test>
+<status status="PASS" start="2025-07-28T22:27:44.279076" elapsed="0.163568"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Onboard" id="s1" pass="1" fail="0" skip="0">Onboard</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-07-28T22:27:44.423946" level="WARN">--- Inside "Check If Root Mode is Enabled in Switch" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.424595" level="WARN">switchInfo:{'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.425120" level="WARN">--- Inside "SSH into Switch and Enter Root mode" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.426464" level="WARN">switchInfo: {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}; hostIp:192.168.101.92</msg>
+<msg time="2025-07-28T22:27:44.429708" level="WARN">lldpNeighbourInterfaceCommand: show lldp interfaces GigabitEthernet 1 neighbor</msg>
+<msg time="2025-07-28T22:27:44.430627" level="WARN">--- Inside "Check If Root Mode is Enabled in Switch" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.431207" level="WARN">switchInfo:{'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.431817" level="WARN">--- Inside "SSH into Switch and Enter Root mode" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.433070" level="WARN">switchInfo: {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}; hostIp:192.168.101.92</msg>
+<msg time="2025-07-28T22:27:44.436034" level="WARN">lldpNeighbourInterfaceCommand: show lldp interfaces GigabitEthernet 11 neighbor</msg>
+<msg time="2025-07-28T22:27:44.436888" level="WARN">--- Inside "Check If Root Mode is Enabled in Switch" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.437416" level="WARN">switchInfo:{'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}</msg>
+<msg time="2025-07-28T22:27:44.437858" level="WARN">--- Inside "SSH into Switch and Enter Root mode" Keyword---</msg>
+<msg time="2025-07-28T22:27:44.439096" level="WARN">switchInfo: {'hostname': 'MgmtSwitch', 'os': 'linux', 'model': 'GS752TXUPv3', 'ipAddress': '192.168.101.92', 'alias': 'onboardingSwitch', 'LinkSpeed': {'1G': '1-48'}, 'ssh': {'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}}; deviceSSHInfo:{'username': 'admin', 'password': 'Netgear1234', 'sudo_password': '\n', 'rootPrompt': '#'}; hostIp:192.168.101.92</msg>
+<msg time="2025-07-28T22:27:44.442150" level="WARN">lldpNeighbourInterfaceCommand: show lldp interfaces GigabitEthernet 48 neighbor</msg>
+</errors>
+</robot>

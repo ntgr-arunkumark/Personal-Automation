@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.1 (Python 3.13.5 on darwin)" generated="2025-07-28T18:35:11.584479" rpa="false" schemaversion="5">
+<suite id="s1" name="Onboard" source="/Users/arunkumar.karthikeyan/Documents/Automation/OnboardingToInsight-Jul282025/TestCases/Onboard.robot">
+<test id="s1-t1" name="Trial1 - Onboard with the specific POE Port number" line="8">
+<kw name="Onboard AP Device To Insight" owner="OnboardingDevices">
+<msg time="2025-07-28T18:35:11.666283" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1',
+ 'poePortNumberList': [1, 11, 48],
+ 'OrganisationName': 'Netgear',
+ 'LocationName': 'Office'} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.666653" level="TRACE">Arguments: [ {'deviceName': 'Switch1',
+ 'poePortNumberList': [1, 11, 48],
+ 'OrganisationName': 'Netgear',
+ 'LocationName': 'Office'} | 'deviceName' ]</msg>
+<msg time="2025-07-28T18:35:11.666698" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.666725" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.666607" elapsed="0.000126"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.666824" level="TRACE">Arguments: [ '192.168.101.92' ]</msg>
+<msg time="2025-07-28T18:35:11.666844" level="TRACE">Return: '192.168.101.92'</msg>
+<msg time="2025-07-28T18:35:11.666863" level="INFO">${switchIP} = 192.168.101.92</msg>
+<var>${switchIP}</var>
+<arg>${${deviceName}}[ipAddress]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.666785" elapsed="0.000086"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.666942" level="TRACE">Arguments: [ {'deviceName': 'Switch1',
+ 'poePortNumberList': [1, 11, 48],
+ 'OrganisationName': 'Netgear',
+ 'LocationName': 'Office'} | 'poePortNumberList' ]</msg>
+<msg time="2025-07-28T18:35:11.666974" level="TRACE">Return: [1, 11, 48]</msg>
+<msg time="2025-07-28T18:35:11.667000" level="INFO">@{PoeList} = [ 1 | 11 | 48 ]</msg>
+<var>@{PoeList}</var>
+<arg>${inputArguments}</arg>
+<arg>poePortNumberList</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.666912" elapsed="0.000096"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Enable Port Configuration Mode And Execute Command" owner="OnboardingDevices">
+<msg time="2025-07-28T18:35:11.667318" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 1} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.667395" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 1} | 'deviceName' ]</msg>
+<msg time="2025-07-28T18:35:11.667417" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.667434" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.667365" elapsed="0.000077"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.667504" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 1} | 'portNumber' ]</msg>
+<msg time="2025-07-28T18:35:11.667524" level="TRACE">Return: 1</msg>
+<msg time="2025-07-28T18:35:11.667542" level="INFO">${portNumber} = 1</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.667476" elapsed="0.000073"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.667608" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T18:35:11.667623" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.667641" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.667584" elapsed="0.000066"/>
+</kw>
+<kw name="Get The Ethernet Port Speed From Testbed" owner="OnboardingDevices">
+<msg time="2025-07-28T18:35:11.667813" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 1} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.667884" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 1} | 'deviceName' ]</msg>
+<msg time="2025-07-28T18:35:11.667904" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.667922" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.667857" elapsed="0.000072"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.667991" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 1} | 'portNumber' ]</msg>
+<msg time="2025-07-28T18:35:11.668011" level="TRACE">Return: 1</msg>
+<msg time="2025-07-28T18:35:11.668028" level="INFO">${portNumber} = 1</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.667963" elapsed="0.000072"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.668092" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T18:35:11.668107" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.668123" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.668068" elapsed="0.000062"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.668192" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'LinkSpeed' ]</msg>
+<msg time="2025-07-28T18:35:11.668236" level="TRACE">Return: {'1G': '1-48'}</msg>
+<msg time="2025-07-28T18:35:11.668256" level="INFO">${speedInfoDevice} = {'1G': '1-48'}</msg>
+<var>${speedInfoDevice}</var>
+<arg>${${deviceNameinfo}}</arg>
+<arg>LinkSpeed</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.668161" elapsed="0.000103"/>
+</kw>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-07-28T18:35:11.668324" level="TRACE">Arguments: [ {'1G': '1-48'} ]</msg>
+<msg time="2025-07-28T18:35:11.668342" level="TRACE">Return: ['1G']</msg>
+<msg time="2025-07-28T18:35:11.668361" level="INFO">${devicePortranges} = ['1G']</msg>
+<var>${devicePortranges}</var>
+<arg>${speedInfoDevice}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.668298" elapsed="0.000070"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.668423" level="TRACE">Arguments: [ False ]</msg>
+<msg time="2025-07-28T18:35:11.668438" level="TRACE">Return: False</msg>
+<msg time="2025-07-28T18:35:11.668454" level="INFO">${portSpeed} = False</msg>
+<var>${portSpeed}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.668400" elapsed="0.000062"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.668636" level="TRACE">Arguments: [ {'1G': '1-48'} | '1G' ]</msg>
+<msg time="2025-07-28T18:35:11.668657" level="TRACE">Return: '1-48'</msg>
+<msg time="2025-07-28T18:35:11.668673" level="INFO">${portRange} = 1-48</msg>
+<var>${portRange}</var>
+<arg>${speedInfoDevice}</arg>
+<arg>${portInput}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.668602" elapsed="0.000077"/>
+</kw>
+<kw name="Split String" owner="String">
+<msg time="2025-07-28T18:35:11.668742" level="TRACE">Arguments: [ '1-48' | '-' ]</msg>
+<msg time="2025-07-28T18:35:11.668760" level="TRACE">Return: ['1', '48']</msg>
+<msg time="2025-07-28T18:35:11.668778" level="INFO">${parts} = ['1', '48']</msg>
+<var>${parts}</var>
+<arg>${portRange}</arg>
+<arg>-</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.668713" elapsed="0.000072"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.668994" level="TRACE">Arguments: [ '1' ]</msg>
+<msg time="2025-07-28T18:35:11.669019" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T18:35:11.669031" level="TRACE">Return: 1.0</msg>
+<msg time="2025-07-28T18:35:11.669050" level="INFO">${start} = 1.0</msg>
+<var>${start}</var>
+<arg>${parts[0]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.668821" elapsed="0.000236"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.669229" level="TRACE">Arguments: [ '48' ]</msg>
+<msg time="2025-07-28T18:35:11.669248" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T18:35:11.669258" level="TRACE">Return: 48.0</msg>
+<msg time="2025-07-28T18:35:11.669275" level="INFO">${end} = 48.0</msg>
+<var>${end}</var>
+<arg>${parts[1]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.669092" elapsed="0.000190"/>
+</kw>
+<if>
+<branch type="IF" condition="${start} &lt;= ${portNumber} &lt;= ${end}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.669417" level="TRACE">Arguments: [ True ]</msg>
+<msg time="2025-07-28T18:35:11.669435" level="TRACE">Return: True</msg>
+<msg time="2025-07-28T18:35:11.669453" level="INFO">${portSpeed} = True</msg>
+<var>${portSpeed}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.669391" elapsed="0.000068"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.669515" level="TRACE">Arguments: [ '${EthernetSpeeds}[${portInput}]' ]</msg>
+<msg time="2025-07-28T18:35:11.669531" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${EthernetSpeeds}[${portInput}]</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.669499" elapsed="0.000056"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:35:11.669314" elapsed="0.000255"/>
+</branch>
+<status status="PASS" start="2025-07-28T18:35:11.669305" elapsed="0.000280"/>
+</if>
+<var name="${portInput}">1G</var>
+<status status="PASS" start="2025-07-28T18:35:11.668573" elapsed="0.001022"/>
+</iter>
+<var>${portInput}</var>
+<value>@{devicePortranges}</value>
+<status status="PASS" start="2025-07-28T18:35:11.668510" elapsed="0.001101"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${portSpeed}</arg>
+<arg>FAIL</arg>
+<arg>Unable to get the valid speed alias from the preconfigured values.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.669653" elapsed="0.000008"/>
+</kw>
+<msg time="2025-07-28T18:35:11.669702" level="TRACE">Return: 'GigabitEthernet'</msg>
+<msg time="2025-07-28T18:35:11.669721" level="INFO">${poeLinkSpeed} = GigabitEthernet</msg>
+<var>${poeLinkSpeed}</var>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${portNumber}</arg>
+<status status="PASS" start="2025-07-28T18:35:11.667742" elapsed="0.001986"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.669780" level="TRACE">Arguments: [ 'portSpeed=${poeLinkSpeed}' | 'portNumber=${portNumber}' ]</msg>
+<msg time="2025-07-28T18:35:11.669839" level="TRACE">Return: {'portSpeed': 'GigabitEthernet', 'portNumber': 1}</msg>
+<msg time="2025-07-28T18:35:11.669868" level="INFO">&amp;{dictArguments} = { portSpeed=GigabitEthernet | portNumber=1 }</msg>
+<var>&amp;{dictArguments}</var>
+<arg>portSpeed=${poeLinkSpeed}</arg>
+<arg>portNumber=${portNumber}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.669765" elapsed="0.000112"/>
+</kw>
+<kw name="Build Command" owner="CommandBuilder">
+<msg time="2025-07-28T18:35:11.669963" level="TRACE">Arguments: [ 'lldpInterfaceNeighbor' | 'linux' | portSpeed='GigabitEthernet' | portNumber=1 ]</msg>
+<msg time="2025-07-28T18:35:11.670023" level="INFO">{'linux': 'show lldp interfaces $portSpeed $portNumber neighbor'}</msg>
+<msg time="2025-07-28T18:35:11.670033" level="TRACE">Return: 'show lldp interfaces GigabitEthernet 1 neighbor'</msg>
+<msg time="2025-07-28T18:35:11.670050" level="INFO">${lldpNeighbourInterfaceCommand} = show lldp interfaces GigabitEthernet 1 neighbor</msg>
+<var>${lldpNeighbourInterfaceCommand}</var>
+<arg>lldpInterfaceNeighbor</arg>
+<arg>linux</arg>
+<arg>&amp;{dictArguments}</arg>
+<doc>Builds a shell command string.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.669910" elapsed="0.000147"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.670131" level="TRACE">Arguments: [ 'show lldp interfaces GigabitEthernet 1 neighbor' | 'WARN' ]</msg>
+<msg time="2025-07-28T18:35:11.670148" level="WARN">show lldp interfaces GigabitEthernet 1 neighbor</msg>
+<msg time="2025-07-28T18:35:11.670191" level="TRACE">Return: None</msg>
+<arg>${lldpNeighbourInterfaceCommand}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.670095" elapsed="0.000112"/>
+</kw>
+<msg time="2025-07-28T18:35:11.670233" level="TRACE">Return: None</msg>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${poe}</arg>
+<status status="PASS" start="2025-07-28T18:35:11.667235" elapsed="0.003011"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.670308" level="TRACE">Arguments: [  ]</msg>
+<msg time="2025-07-28T18:35:11.670323" level="INFO">Continuing for loop from the next iteration.</msg>
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.670293" elapsed="0.000049"/>
+</kw>
+<kw name="SSH Write Command" owner="SSHOperations">
+<var>${lldpNeighborReport}</var>
+<arg>device=${aliasName}</arg>
+<arg>command=show lldp neighbor\n</arg>
+<arg>timeout=4s</arg>
+<doc>Sends a command and returns output.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.670394" elapsed="0.000010"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${lldpNeighborReport}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.670438" elapsed="0.000007"/>
+</kw>
+<kw name="Split To Lines" owner="String">
+<var>${splitLLDPOutput}</var>
+<arg>${lldpNeighborReport}</arg>
+<doc>Splits the given string to lines.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.670474" elapsed="0.000007"/>
+</kw>
+<var name="${poe}">1</var>
+<status status="PASS" start="2025-07-28T18:35:11.667183" elapsed="0.003308"/>
+</iter>
+<iter>
+<kw name="Enable Port Configuration Mode And Execute Command" owner="OnboardingDevices">
+<msg time="2025-07-28T18:35:11.670634" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 11} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.670705" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 11} | 'deviceName' ]</msg>
+<msg time="2025-07-28T18:35:11.670742" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.670760" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.670676" elapsed="0.000091"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.670828" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 11} | 'portNumber' ]</msg>
+<msg time="2025-07-28T18:35:11.670848" level="TRACE">Return: 11</msg>
+<msg time="2025-07-28T18:35:11.670865" level="INFO">${portNumber} = 11</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.670800" elapsed="0.000073"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.670929" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T18:35:11.670943" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.670959" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.670906" elapsed="0.000061"/>
+</kw>
+<kw name="Get The Ethernet Port Speed From Testbed" owner="OnboardingDevices">
+<msg time="2025-07-28T18:35:11.671107" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 11} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.671176" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 11} | 'deviceName' ]</msg>
+<msg time="2025-07-28T18:35:11.671196" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.671213" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.671148" elapsed="0.000072"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.671279" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 11} | 'portNumber' ]</msg>
+<msg time="2025-07-28T18:35:11.671298" level="TRACE">Return: 11</msg>
+<msg time="2025-07-28T18:35:11.671315" level="INFO">${portNumber} = 11</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.671252" elapsed="0.000070"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.671381" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T18:35:11.671395" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.671411" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.671354" elapsed="0.000063"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.671480" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'LinkSpeed' ]</msg>
+<msg time="2025-07-28T18:35:11.671522" level="TRACE">Return: {'1G': '1-48'}</msg>
+<msg time="2025-07-28T18:35:11.671542" level="INFO">${speedInfoDevice} = {'1G': '1-48'}</msg>
+<var>${speedInfoDevice}</var>
+<arg>${${deviceNameinfo}}</arg>
+<arg>LinkSpeed</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.671449" elapsed="0.000100"/>
+</kw>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-07-28T18:35:11.671607" level="TRACE">Arguments: [ {'1G': '1-48'} ]</msg>
+<msg time="2025-07-28T18:35:11.671624" level="TRACE">Return: ['1G']</msg>
+<msg time="2025-07-28T18:35:11.671642" level="INFO">${devicePortranges} = ['1G']</msg>
+<var>${devicePortranges}</var>
+<arg>${speedInfoDevice}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.671582" elapsed="0.000066"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.671704" level="TRACE">Arguments: [ False ]</msg>
+<msg time="2025-07-28T18:35:11.671718" level="TRACE">Return: False</msg>
+<msg time="2025-07-28T18:35:11.671735" level="INFO">${portSpeed} = False</msg>
+<var>${portSpeed}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.671679" elapsed="0.000063"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.671874" level="TRACE">Arguments: [ {'1G': '1-48'} | '1G' ]</msg>
+<msg time="2025-07-28T18:35:11.671894" level="TRACE">Return: '1-48'</msg>
+<msg time="2025-07-28T18:35:11.671911" level="INFO">${portRange} = 1-48</msg>
+<var>${portRange}</var>
+<arg>${speedInfoDevice}</arg>
+<arg>${portInput}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.671841" elapsed="0.000077"/>
+</kw>
+<kw name="Split String" owner="String">
+<msg time="2025-07-28T18:35:11.671980" level="TRACE">Arguments: [ '1-48' | '-' ]</msg>
+<msg time="2025-07-28T18:35:11.671998" level="TRACE">Return: ['1', '48']</msg>
+<msg time="2025-07-28T18:35:11.672015" level="INFO">${parts} = ['1', '48']</msg>
+<var>${parts}</var>
+<arg>${portRange}</arg>
+<arg>-</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.671952" elapsed="0.000070"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.672192" level="TRACE">Arguments: [ '1' ]</msg>
+<msg time="2025-07-28T18:35:11.672210" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T18:35:11.672220" level="TRACE">Return: 1.0</msg>
+<msg time="2025-07-28T18:35:11.672237" level="INFO">${start} = 1.0</msg>
+<var>${start}</var>
+<arg>${parts[0]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.672056" elapsed="0.000188"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.672405" level="TRACE">Arguments: [ '48' ]</msg>
+<msg time="2025-07-28T18:35:11.672422" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T18:35:11.672432" level="TRACE">Return: 48.0</msg>
+<msg time="2025-07-28T18:35:11.672449" level="INFO">${end} = 48.0</msg>
+<var>${end}</var>
+<arg>${parts[1]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.672278" elapsed="0.000178"/>
+</kw>
+<if>
+<branch type="IF" condition="${start} &lt;= ${portNumber} &lt;= ${end}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.672572" level="TRACE">Arguments: [ True ]</msg>
+<msg time="2025-07-28T18:35:11.672588" level="TRACE">Return: True</msg>
+<msg time="2025-07-28T18:35:11.672604" level="INFO">${portSpeed} = True</msg>
+<var>${portSpeed}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.672548" elapsed="0.000063"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.672661" level="TRACE">Arguments: [ '${EthernetSpeeds}[${portInput}]' ]</msg>
+<msg time="2025-07-28T18:35:11.672688" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${EthernetSpeeds}[${portInput}]</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.672647" elapsed="0.000057"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:35:11.672482" elapsed="0.000235"/>
+</branch>
+<status status="PASS" start="2025-07-28T18:35:11.672475" elapsed="0.000254"/>
+</if>
+<var name="${portInput}">1G</var>
+<status status="PASS" start="2025-07-28T18:35:11.671814" elapsed="0.000923"/>
+</iter>
+<var>${portInput}</var>
+<value>@{devicePortranges}</value>
+<status status="PASS" start="2025-07-28T18:35:11.671759" elapsed="0.000991"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${portSpeed}</arg>
+<arg>FAIL</arg>
+<arg>Unable to get the valid speed alias from the preconfigured values.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.672787" elapsed="0.000008"/>
+</kw>
+<msg time="2025-07-28T18:35:11.672831" level="TRACE">Return: 'GigabitEthernet'</msg>
+<msg time="2025-07-28T18:35:11.672850" level="INFO">${poeLinkSpeed} = GigabitEthernet</msg>
+<var>${poeLinkSpeed}</var>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${portNumber}</arg>
+<status status="PASS" start="2025-07-28T18:35:11.671032" elapsed="0.001825"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.672906" level="TRACE">Arguments: [ 'portSpeed=${poeLinkSpeed}' | 'portNumber=${portNumber}' ]</msg>
+<msg time="2025-07-28T18:35:11.672961" level="TRACE">Return: {'portSpeed': 'GigabitEthernet', 'portNumber': 11}</msg>
+<msg time="2025-07-28T18:35:11.672991" level="INFO">&amp;{dictArguments} = { portSpeed=GigabitEthernet | portNumber=11 }</msg>
+<var>&amp;{dictArguments}</var>
+<arg>portSpeed=${poeLinkSpeed}</arg>
+<arg>portNumber=${portNumber}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.672891" elapsed="0.000107"/>
+</kw>
+<kw name="Build Command" owner="CommandBuilder">
+<msg time="2025-07-28T18:35:11.673075" level="TRACE">Arguments: [ 'lldpInterfaceNeighbor' | 'linux' | portSpeed='GigabitEthernet' | portNumber=11 ]</msg>
+<msg time="2025-07-28T18:35:11.673126" level="INFO">{'linux': 'show lldp interfaces $portSpeed $portNumber neighbor'}</msg>
+<msg time="2025-07-28T18:35:11.673136" level="TRACE">Return: 'show lldp interfaces GigabitEthernet 11 neighbor'</msg>
+<msg time="2025-07-28T18:35:11.673154" level="INFO">${lldpNeighbourInterfaceCommand} = show lldp interfaces GigabitEthernet 11 neighbor</msg>
+<var>${lldpNeighbourInterfaceCommand}</var>
+<arg>lldpInterfaceNeighbor</arg>
+<arg>linux</arg>
+<arg>&amp;{dictArguments}</arg>
+<doc>Builds a shell command string.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.673032" elapsed="0.000128"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.673229" level="TRACE">Arguments: [ 'show lldp interfaces GigabitEthernet 11 neighbor' | 'WARN' ]</msg>
+<msg time="2025-07-28T18:35:11.673245" level="WARN">show lldp interfaces GigabitEthernet 11 neighbor</msg>
+<msg time="2025-07-28T18:35:11.673278" level="TRACE">Return: None</msg>
+<arg>${lldpNeighbourInterfaceCommand}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.673195" elapsed="0.000097"/>
+</kw>
+<msg time="2025-07-28T18:35:11.673315" level="TRACE">Return: None</msg>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${poe}</arg>
+<status status="PASS" start="2025-07-28T18:35:11.670564" elapsed="0.002763"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.673379" level="TRACE">Arguments: [  ]</msg>
+<msg time="2025-07-28T18:35:11.673392" level="INFO">Continuing for loop from the next iteration.</msg>
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.673364" elapsed="0.000043"/>
+</kw>
+<kw name="SSH Write Command" owner="SSHOperations">
+<var>${lldpNeighborReport}</var>
+<arg>device=${aliasName}</arg>
+<arg>command=show lldp neighbor\n</arg>
+<arg>timeout=4s</arg>
+<doc>Sends a command and returns output.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.673454" elapsed="0.000010"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${lldpNeighborReport}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.673496" elapsed="0.000007"/>
+</kw>
+<kw name="Split To Lines" owner="String">
+<var>${splitLLDPOutput}</var>
+<arg>${lldpNeighborReport}</arg>
+<doc>Splits the given string to lines.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.673532" elapsed="0.000006"/>
+</kw>
+<var name="${poe}">11</var>
+<status status="PASS" start="2025-07-28T18:35:11.670526" elapsed="0.003023"/>
+</iter>
+<iter>
+<kw name="Enable Port Configuration Mode And Execute Command" owner="OnboardingDevices">
+<msg time="2025-07-28T18:35:11.673689" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 48} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.673760" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 48} | 'deviceName' ]</msg>
+<msg time="2025-07-28T18:35:11.673781" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.673797" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.673732" elapsed="0.000072"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.673864" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 48} | 'portNumber' ]</msg>
+<msg time="2025-07-28T18:35:11.673883" level="TRACE">Return: 48</msg>
+<msg time="2025-07-28T18:35:11.673900" level="INFO">${portNumber} = 48</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.673837" elapsed="0.000070"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.673964" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T18:35:11.673979" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.673995" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.673940" elapsed="0.000062"/>
+</kw>
+<kw name="Get The Ethernet Port Speed From Testbed" owner="OnboardingDevices">
+<msg time="2025-07-28T18:35:11.674134" level="TRACE">Arguments: [ &amp;{inputArguments}={'deviceName': 'Switch1', 'portNumber': 48} ]</msg>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.674200" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 48} | 'deviceName' ]</msg>
+<msg time="2025-07-28T18:35:11.674220" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.674237" level="INFO">${deviceName} = Switch1</msg>
+<var>${deviceName}</var>
+<arg>${inputArguments}</arg>
+<arg>deviceName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.674174" elapsed="0.000069"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.674303" level="TRACE">Arguments: [ {'deviceName': 'Switch1', 'portNumber': 48} | 'portNumber' ]</msg>
+<msg time="2025-07-28T18:35:11.674322" level="TRACE">Return: 48</msg>
+<msg time="2025-07-28T18:35:11.674339" level="INFO">${portNumber} = 48</msg>
+<var>${portNumber}</var>
+<arg>${inputArguments}</arg>
+<arg>portNumber</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.674276" elapsed="0.000070"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.674415" level="TRACE">Arguments: [ 'Switch1' ]</msg>
+<msg time="2025-07-28T18:35:11.674431" level="TRACE">Return: 'Switch1'</msg>
+<msg time="2025-07-28T18:35:11.674447" level="INFO">${deviceNameinfo} = Switch1</msg>
+<var>${deviceNameinfo}</var>
+<arg>${deviceName}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.674390" elapsed="0.000064"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.674518" level="TRACE">Arguments: [ {'hostname': 'MgmtSwitch',
+ 'os': 'linux',
+ 'model': 'GS752TXUPv3',
+ 'ipAddress': '192.168.101.92',
+ 'alias': 'onboardingSwitch',
+ 'LinkSpeed': {'1G': '1-48'},
+ 'ssh': {'username': 'admin',
+         'password': 'Netgear1234',
+         'sudo_password': '\n',
+         'rootPrompt': '#'}} | 'LinkSpeed' ]</msg>
+<msg time="2025-07-28T18:35:11.674560" level="TRACE">Return: {'1G': '1-48'}</msg>
+<msg time="2025-07-28T18:35:11.674580" level="INFO">${speedInfoDevice} = {'1G': '1-48'}</msg>
+<var>${speedInfoDevice}</var>
+<arg>${${deviceNameinfo}}</arg>
+<arg>LinkSpeed</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.674486" elapsed="0.000101"/>
+</kw>
+<kw name="Get Dictionary Keys" owner="Collections">
+<msg time="2025-07-28T18:35:11.674647" level="TRACE">Arguments: [ {'1G': '1-48'} ]</msg>
+<msg time="2025-07-28T18:35:11.674665" level="TRACE">Return: ['1G']</msg>
+<msg time="2025-07-28T18:35:11.674684" level="INFO">${devicePortranges} = ['1G']</msg>
+<var>${devicePortranges}</var>
+<arg>${speedInfoDevice}</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.674621" elapsed="0.000070"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.674746" level="TRACE">Arguments: [ False ]</msg>
+<msg time="2025-07-28T18:35:11.674762" level="TRACE">Return: False</msg>
+<msg time="2025-07-28T18:35:11.674778" level="INFO">${portSpeed} = False</msg>
+<var>${portSpeed}</var>
+<arg>${FALSE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.674723" elapsed="0.000061"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-07-28T18:35:11.674910" level="TRACE">Arguments: [ {'1G': '1-48'} | '1G' ]</msg>
+<msg time="2025-07-28T18:35:11.674930" level="TRACE">Return: '1-48'</msg>
+<msg time="2025-07-28T18:35:11.674946" level="INFO">${portRange} = 1-48</msg>
+<var>${portRange}</var>
+<arg>${speedInfoDevice}</arg>
+<arg>${portInput}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.674879" elapsed="0.000074"/>
+</kw>
+<kw name="Split String" owner="String">
+<msg time="2025-07-28T18:35:11.675013" level="TRACE">Arguments: [ '1-48' | '-' ]</msg>
+<msg time="2025-07-28T18:35:11.675030" level="TRACE">Return: ['1', '48']</msg>
+<msg time="2025-07-28T18:35:11.675052" level="INFO">${parts} = ['1', '48']</msg>
+<var>${parts}</var>
+<arg>${portRange}</arg>
+<arg>-</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.674985" elapsed="0.000074"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.675222" level="TRACE">Arguments: [ '1' ]</msg>
+<msg time="2025-07-28T18:35:11.675239" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T18:35:11.675250" level="TRACE">Return: 1.0</msg>
+<msg time="2025-07-28T18:35:11.675266" level="INFO">${start} = 1.0</msg>
+<var>${start}</var>
+<arg>${parts[0]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.675091" elapsed="0.000183"/>
+</kw>
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.675429" level="TRACE">Arguments: [ '48' ]</msg>
+<msg time="2025-07-28T18:35:11.675446" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;</msg>
+<msg time="2025-07-28T18:35:11.675456" level="TRACE">Return: 48.0</msg>
+<msg time="2025-07-28T18:35:11.675472" level="INFO">${end} = 48.0</msg>
+<var>${end}</var>
+<arg>${parts[1]}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.675306" elapsed="0.000173"/>
+</kw>
+<if>
+<branch type="IF" condition="${start} &lt;= ${portNumber} &lt;= ${end}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.675722" level="TRACE">Arguments: [ True ]</msg>
+<msg time="2025-07-28T18:35:11.675739" level="TRACE">Return: True</msg>
+<msg time="2025-07-28T18:35:11.675756" level="INFO">${portSpeed} = True</msg>
+<var>${portSpeed}</var>
+<arg>${TRUE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.675696" elapsed="0.000067"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.675814" level="TRACE">Arguments: [ '${EthernetSpeeds}[${portInput}]' ]</msg>
+<msg time="2025-07-28T18:35:11.675827" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${EthernetSpeeds}[${portInput}]</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.675800" elapsed="0.000041"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:35:11.675502" elapsed="0.000352"/>
+</branch>
+<status status="PASS" start="2025-07-28T18:35:11.675496" elapsed="0.000370"/>
+</if>
+<var name="${portInput}">1G</var>
+<status status="PASS" start="2025-07-28T18:35:11.674852" elapsed="0.001021"/>
+</iter>
+<var>${portInput}</var>
+<value>@{devicePortranges}</value>
+<status status="PASS" start="2025-07-28T18:35:11.674801" elapsed="0.001083"/>
+</for>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${portSpeed}</arg>
+<arg>FAIL</arg>
+<arg>Unable to get the valid speed alias from the preconfigured values.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.675920" elapsed="0.000007"/>
+</kw>
+<msg time="2025-07-28T18:35:11.675967" level="TRACE">Return: 'GigabitEthernet'</msg>
+<msg time="2025-07-28T18:35:11.675985" level="INFO">${poeLinkSpeed} = GigabitEthernet</msg>
+<var>${poeLinkSpeed}</var>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${portNumber}</arg>
+<status status="PASS" start="2025-07-28T18:35:11.674066" elapsed="0.001926"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.676040" level="TRACE">Arguments: [ 'portSpeed=${poeLinkSpeed}' | 'portNumber=${portNumber}' ]</msg>
+<msg time="2025-07-28T18:35:11.676093" level="TRACE">Return: {'portSpeed': 'GigabitEthernet', 'portNumber': 48}</msg>
+<msg time="2025-07-28T18:35:11.676121" level="INFO">&amp;{dictArguments} = { portSpeed=GigabitEthernet | portNumber=48 }</msg>
+<var>&amp;{dictArguments}</var>
+<arg>portSpeed=${poeLinkSpeed}</arg>
+<arg>portNumber=${portNumber}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.676025" elapsed="0.000103"/>
+</kw>
+<kw name="Build Command" owner="CommandBuilder">
+<msg time="2025-07-28T18:35:11.676202" level="TRACE">Arguments: [ 'lldpInterfaceNeighbor' | 'linux' | portSpeed='GigabitEthernet' | portNumber=48 ]</msg>
+<msg time="2025-07-28T18:35:11.676251" level="INFO">{'linux': 'show lldp interfaces $portSpeed $portNumber neighbor'}</msg>
+<msg time="2025-07-28T18:35:11.676260" level="TRACE">Return: 'show lldp interfaces GigabitEthernet 48 neighbor'</msg>
+<msg time="2025-07-28T18:35:11.676278" level="INFO">${lldpNeighbourInterfaceCommand} = show lldp interfaces GigabitEthernet 48 neighbor</msg>
+<var>${lldpNeighbourInterfaceCommand}</var>
+<arg>lldpInterfaceNeighbor</arg>
+<arg>linux</arg>
+<arg>&amp;{dictArguments}</arg>
+<doc>Builds a shell command string.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.676161" elapsed="0.000123"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.676365" level="TRACE">Arguments: [ 'show lldp interfaces GigabitEthernet 48 neighbor' | 'WARN' ]</msg>
+<msg time="2025-07-28T18:35:11.676381" level="WARN">show lldp interfaces GigabitEthernet 48 neighbor</msg>
+<msg time="2025-07-28T18:35:11.676413" level="TRACE">Return: None</msg>
+<arg>${lldpNeighbourInterfaceCommand}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.676332" elapsed="0.000092"/>
+</kw>
+<msg time="2025-07-28T18:35:11.676447" level="TRACE">Return: None</msg>
+<arg>deviceName=${deviceName}</arg>
+<arg>portNumber=${poe}</arg>
+<status status="PASS" start="2025-07-28T18:35:11.673619" elapsed="0.002841"/>
+</kw>
+<kw name="Continue For Loop" owner="BuiltIn">
+<msg time="2025-07-28T18:35:11.676511" level="TRACE">Arguments: [  ]</msg>
+<msg time="2025-07-28T18:35:11.676524" level="INFO">Continuing for loop from the next iteration.</msg>
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="PASS" start="2025-07-28T18:35:11.676497" elapsed="0.000040"/>
+</kw>
+<kw name="SSH Write Command" owner="SSHOperations">
+<var>${lldpNeighborReport}</var>
+<arg>device=${aliasName}</arg>
+<arg>command=show lldp neighbor\n</arg>
+<arg>timeout=4s</arg>
+<doc>Sends a command and returns output.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.676584" elapsed="0.000009"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${lldpNeighborReport}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.676625" elapsed="0.000008"/>
+</kw>
+<kw name="Split To Lines" owner="String">
+<var>${splitLLDPOutput}</var>
+<arg>${lldpNeighborReport}</arg>
+<doc>Splits the given string to lines.</doc>
+<status status="NOT RUN" start="2025-07-28T18:35:11.676661" elapsed="0.000007"/>
+</kw>
+<var name="${poe}">48</var>
+<status status="PASS" start="2025-07-28T18:35:11.673581" elapsed="0.003099"/>
+</iter>
+<var>${poe}</var>
+<value>@{PoeList}</value>
+<status status="PASS" start="2025-07-28T18:35:11.667033" elapsed="0.009664"/>
+</for>
+<msg time="2025-07-28T18:35:11.676714" level="TRACE">Return: None</msg>
+<arg>&amp;{OnboardingArguments}</arg>
+<status status="PASS" start="2025-07-28T18:35:11.666185" elapsed="0.010540"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:35:11.665893" elapsed="0.010881"/>
+</test>
+<status status="PASS" start="2025-07-28T18:35:11.585242" elapsed="0.091683"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Onboard" id="s1" pass="1" fail="0" skip="0">Onboard</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-07-28T18:35:11.670148" level="WARN">show lldp interfaces GigabitEthernet 1 neighbor</msg>
+<msg time="2025-07-28T18:35:11.673245" level="WARN">show lldp interfaces GigabitEthernet 11 neighbor</msg>
+<msg time="2025-07-28T18:35:11.676381" level="WARN">show lldp interfaces GigabitEthernet 48 neighbor</msg>
+</errors>
+</robot>

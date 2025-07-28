@@ -1,0 +1,15 @@
+enableRootMode: 
+  linux: "enable"
+  # gs10txup: "enable"
+
+poeOn:
+  linux: "None" #To turn on the POE's Power.
+
+lldpNeighbor:
+  linux: "show lldp neighbor"
+
+lldpInterfaceNeighbor:
+  linux: "show lldp interfaces $portSpeed $portNumber neighbor"
+  
+poeOff:
+  linux: "None" #To turn off the POE's power.

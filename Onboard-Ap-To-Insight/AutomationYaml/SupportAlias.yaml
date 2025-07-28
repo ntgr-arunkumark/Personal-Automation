@@ -1,0 +1,4 @@
+EthernetSpeeds:
+  "1G": "GigabitEthernet"
+  "2.5G": "MultiGigabitEthernet"
+  "10G": "XGigabitEthernet"

@@ -1,0 +1,14 @@
+Switch1:
+  "hostname": "MgmtSwitch"
+  "os": "linux"
+  "model": "GS752TXUPv3"
+  "ipAddress": "192.168.101.92"
+  "alias": "onboardingSwitch"
+  "LinkSpeed":
+      "1G": "1-48"
+  "ssh":
+    "username": "admin"
+    "password": "Netgear1234"  #Same as Device UI Password
+    "sudo_password": "\n"
+    "rootPrompt": "#"
+    
