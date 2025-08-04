@@ -18,9 +18,11 @@ Onboard AP Device To Insight
     
     # SSH into Switch and Enter Root mode    switchIP=${switchIP}  ##Working
     &{onboardingInfoDict}    Create Dictionary
+    # SSH Open Access    &{inputArguments} ## check this one
+    SSH Open Access    device=${deviceName}    host=${switchIP}    username=${${deviceName}}[ssh][username]    password=${${deviceName}}[ssh][password]
     FOR     ${poe}    IN     @{PoeList}
         ${OnboardingInfo}    Get Onboarding Information from LLDP    deviceName=${deviceName}    portNumber=${poe}
-        Set To Dictionary    ${onboardingInfoDict}    ${poe}    &{OnboardingInfo}
+        Set To Dictionary    ${onboardingInfoDict}    ${poe}    ${OnboardingInfo}
 
     END
     Log    Onboarding Information: ${onboardingInfoDict}    WARN
@@ -70,16 +72,35 @@ Get Onboarding Information from LLDP
     ${lldpNeighbourInterfaceCommand}    Build Command    lldpInterfaceNeighbor    linux    &{dictArguments}
     Log    lldpNeighbourInterfaceCommand: ${lldpNeighbourInterfaceCommand}    WARN
     
-    ${lldpNeighbourInterfaceOutput}    SSH Execute Command    device=${deviceName}    command=${lldpNeighbourInterfaceCommand}
-    Log    ${lldpNeighbourInterfaceCommand}   WARN
+    ${lldpNeighbourInterfaceOutput}    SSH Write Command    device=${deviceName}    command=${lldpNeighbourInterfaceCommand}    timeout=5s
+    Log    ${lldpNeighbourInterfaceOutput}   WARN
     
-    ${system_name}=    Get Regexp Matches    ${lldpNeighbourInterfaceOutput}    System Name:\s*(\S+)
-    Run Keyword If    not ${system_name}    FAIL    Unable to find the System Name in the LLDP output for device: ${deviceName}
-    ${port_id}=        Get Regexp Matches    ${lldpNeighbourInterfaceOutput}    Port ID:\s*(\S+)
-    ${mgmt_addr}=      Get Regexp Matches    ${lldpNeighbourInterfaceOutput}    Management address:\s*(\S+)
+    ${system_name_line}=    Get Lines Containing String    ${lldpNeighbourInterfaceOutput}    System Name
+    ${system_name_length}    Get Length    ${system_name_line}
+    Run Keyword If    ${system_name_length} == 0    FAIL    Unable to find the System Name in the LLDP output for device: ${deviceName}
 
-    &{lldpInfo}    Create Dictionary    SerialNumber=${system_name[0]}    MacAddress=${port_id[0]}    IPAddress=${mgmt_addr[0]}
+    ${port_id_line}=        Get Lines Containing String    ${lldpNeighbourInterfaceOutput}    Port ID
+    ${mgmt_addr_line}=      Get Lines Containing String    ${lldpNeighbourInterfaceOutput}    Management address
+
+    ${system_name}=    Split String    ${system_name_line}    System Name:    
+    ${port_id}=        Split String    ${port_id_line}      Port ID:        
+    ${mgmt_addr}=      Split String    ${mgmt_addr_line}    Management address:    
+
+    ${system_name}=         Strip String    ${system_name}[1]
+    ${port_id}=             Strip String    ${port_id}[1]      
+    ${mgmt_addr}=           Strip String    ${mgmt_addr}[1]
+
+    &{lldpInfo}    Create Dictionary    SerialNumber= ${system_name}    MacAddress=${port_id}    IPAddress=${mgmt_addr}
     Return From Keyword    &{lldpInfo}
+
+
+# ${system_name_line}=    Get Line Containing String    ${output}    System Name
+#     ${port_id_line}=        Get Line Containing String    ${output}    Port ID
+#     ${mgmt_addr_line}=      Get Line Containing String    ${output}    Management address
+
+#     ${system_name}=         Get Substring After    ${system_name_line}    System Name:
+#     ${port_id}=             Get Substring After    ${port_id_line}      Port ID:
+#     ${mgmt_addr}=           Get Substring After    ${mgmt_addr_line}    Management address:
 
 
 Check If Root Mode is Enabled in Switch
@@ -136,6 +157,7 @@ SSH into Switch and Enter Root mode
         # If the root prompt is not found, it will retry the command
         # If     not ${rootPromptStatus}    Check For Password Prompt in SSH and Execute command    &{inputArguments}
         IF     not ${rootPromptStatus}
+
             ${writtenCmdOutput}    SSH Write Command    device=${deviceName}    command="enable"
             ${lowerCaseCmdOutput}     Convert to lower Case    ${writtenCmdOutput}
             #Check if the command output contains 'password' to handle case-insensitive password prompts
